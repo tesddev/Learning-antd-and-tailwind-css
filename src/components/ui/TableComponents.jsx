@@ -87,26 +87,52 @@ const data = [
 
 const TableComponents = () => (
   <Table dataSource={data}>
-    <ColumnGroup title="Name">
-      <Column title="First Name" dataIndex="firstName" key="firstName" />
-      <Column title="Last Name" dataIndex="lastName" key="lastName" />
-    </ColumnGroup>
-    <Column title="Age" dataIndex="age" key="age" />
-    <Column title="Address" dataIndex="address" key="address" />
     <Column
-      title="Tags"
-      dataIndex="tags"
-      key="tags"
+      title={
+        <div class="text-zinc-400">NAME</div>
+      }
+      key="name"
+      render={(text, record) => (
+        <Space size="middle">
+          <img src={record.image} alt="profile" style={{ width: 40, height: 40 }} class="rounded-full"/>
+          <div>
+            <div>{record.name}</div>
+            <div style={{ fontSize: 'smaller', color: 'gray' }}>{record.email}</div>
+          </div>
+        </Space>
+      )}
+    />
+
+    <Column
+      title={
+        <div class="text-zinc-400">TITLE</div>
+      }
+      key="title"
+      render={(text, record) => (
+        <Space size="middle">
+          <div>
+            <div>{record.title}</div>
+            <div style={{ fontSize: 'smaller', color: 'gray' }}>{record.specialty}</div>
+          </div>
+        </Space>
+      )}
+    />
+    <Column
+      title={
+        <div class="text-zinc-400">STATUS</div>
+      }
+      dataIndex="status"
+      key="status"
       render={(tags) => (
         <>
           {tags.map((tag) => {
-            let color = tag.length > 5 ? 'geekblue' : 'green';
+            let color = '#D1FAE5';
             if (tag === 'loser') {
-              color = 'volcano';
+              color = '#D1FAE5';
             }
             return (
               <Tag color={color} key={tag}>
-                {tag.toUpperCase()}
+                <div style={{ fontSize: 'small', color: 'black' }}>{tag}</div>
               </Tag>
             );
           })}
@@ -114,12 +140,23 @@ const TableComponents = () => (
       )}
     />
     <Column
-      title="Action"
-      key="action"
+      title={
+        <div class="text-zinc-400">ROLE</div>
+      }
+      dataIndex="role"
+      key="role"
+      render={(value, record) => (
+        <Space size="middle">
+          <a>{value}</a>
+        </Space>
+      )}
+    />
+    <Column
+      title=""
+      key=""
       render={(_, record) => (
         <Space size="middle">
-          <a>Invite {record.lastName}</a>
-          <a>Delete</a>
+          <a class='text-blue-600'>Edit</a>
         </Space>
       )}
     />
