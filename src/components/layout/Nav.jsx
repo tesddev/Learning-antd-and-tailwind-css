@@ -6,6 +6,14 @@ import {
   UserOutlined,
   VideoCameraOutlined,
   NotificationOutlined,
+  TableOutlined,
+  FormOutlined,
+  CreditCardOutlined,
+  DatabaseOutlined,
+  LayoutOutlined,
+  ShoppingCartOutlined,
+  ShoppingOutlined,
+  UsergroupAddOutlined
 } from "@ant-design/icons";
 import { Button, Layout, Menu, theme } from "antd";
 import SearchInput from "../ui/SearchInput";
@@ -19,6 +27,13 @@ const Nav = () => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+  const firstImage = <UsergroupAddOutlined/>
+  const secondImage = <ShoppingCartOutlined/>
+  const thirdImage = <ShoppingOutlined />
+
+  const theClassName1 = "h-[60px] w-[60px] bg-purple-600 rounded-full flex justify-center items-center text-3xl"
+  const theClassName2 = "h-[60px] w-[60px] bg-blue-600 rounded-full flex justify-center items-center text-3xl"
+  const theClassName3 = "h-[60px] w-[60px] bg-pink-500 rounded-full flex justify-center items-center text-3xl"
   return (
     <Layout className="h-screen w-screen">
       <Sider trigger={null} collapsible collapsed={collapsed}>
@@ -41,27 +56,27 @@ const Nav = () => {
             },
             {
               key: "3",
-              icon: <UploadOutlined />,
+              icon: <TableOutlined />,
               label: "Tables",
             },
             {
               key: "4",
-              icon: <UploadOutlined />,
+              icon: <FormOutlined />,
               label: "Forms",
             },
             {
               key: "5",
-              icon: <UploadOutlined />,
+              icon: <CreditCardOutlined />,
               label: "Card",
             },
             {
               key: "6",
-              icon: <UploadOutlined />,
+              icon: <DatabaseOutlined />,
               label: "Modal",
             },
             {
               key: "7",
-              icon: <UploadOutlined />,
+              icon: <LayoutOutlined />,
               label: "Blank",
             },
           ]}
@@ -108,6 +123,7 @@ const Nav = () => {
             </div>
           </div>
         </Header>
+        <hr class="w-full bg-purple-700 h-1.5" />
         <Content
           style={{
             margin: "24px 16px",
@@ -117,18 +133,18 @@ const Nav = () => {
             borderRadius: borderRadiusLG,
           }}
         >
-          <div>
-            <h1>Dashboard</h1>
-          </div>
-          <div className="mt-4 flex justify-between">
-            <CardComponent numbers="8282"   text="new user"/>
-            <CardComponent  numbers="200521" text="total orders"/>
-
-            <CardComponent numbers="215542"  text="avialiable Products"/>
-          </div>
-          <div>
-            <TableComponents/>
-            </div>
+        <div>
+          <h1 className="text-4xl">Dashboard</h1>
+        </div>
+        <div className="mt-4 flex justify-between">
+          <CardComponent numbers="8282"   text="new user" image={firstImage} theClassName={theClassName1}/>
+          <CardComponent  numbers="200521" text="total orders" image={secondImage} theClassName={theClassName2}/>
+          <CardComponent numbers="215542"  text="avialiable Products" image={thirdImage} theClassName={theClassName3}/>
+        </div>
+        <br></br><br></br>
+        <div>
+          <TableComponents/>
+        </div>
         </Content>
       </Layout>
     </Layout>
